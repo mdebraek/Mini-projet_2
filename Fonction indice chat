@@ -1,0 +1,24 @@
+def cat_hint(player_position_x:int,player_position_y:int,cat_position_x:int,cat_position_y:int)
+  """
+  This function show a arrow on the console screen depending on the position of the player and the wherethe cat is in function of the player.
+  Parameters
+  ----------
+  player_position_x : the position x of the player(int)
+  player_position_y : the position y of the player(int)
+  cat_position_x : the position x of the cat(int)
+  cat_position_y : the position y of the cat(int)
+  Returns
+  -------
+  Return: the result is an arrow which is print on the screen of the console
+  """
+  if player_position_x == cat_position_x and player_position_y == cat_position_y
+    print("you win")
+  else:
+    if cat_position_x > player_position_x #show east
+    else:
+      #show west
+
+    if cat_position_y > player_position_y #show north
+    else:
+      #show south
+    # arrow to add
