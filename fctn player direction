@@ -11,8 +11,8 @@ def player_direction():
     
     while True:
         if button_a.is_pressed():
-            x = round((accelerometer.get_x() - (-1024)) * (4) / (1000 - (-1024)))
-            y = round((accelerometer.get_y() - (-1024)) * (4) / (1000 - (-1024)))
+            x = round((accelerometer.get_x() - (-1024)) * (4) / (1024 - (-1024)))
+            y = round((accelerometer.get_y() - (-1024)) * (4) / (1024 - (-1024)))
             coordinates = "%d,%d" %(x,y)
             sleep(250)
 
