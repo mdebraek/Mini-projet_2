@@ -1,0 +1,24 @@
+def move_cat(cat_position_x:int,cat_position_y:int):
+    """Make the cat move
+    Parameters
+    ----------
+    cat_position_x : the position x of the cat(int)
+    cat_position_y : the position y of the cat(int)
+    Return
+    ------
+    Result: the result is that the cat moved.
+    The cat can moved west,south,north,east or not moved
+    """
+    number = random.randint(1,5)
+    if number == 1:
+        cat_position_y +=1 #north
+        return cat_position_y
+    elif number ==2:
+        cat_position_y -=1 #south
+        return cat_position_y
+    elif number == 3:
+        cat_position_x +=1 #east
+        return cat_position_x
+    elif number == 4:
+        cat_position_x -=1 #west
+        return cat_position_x
