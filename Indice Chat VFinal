@@ -12,6 +12,7 @@ def cat_hint(player_position_x:int,player_position_y:int,cat_position_x:int,cat_
   -------
   Return: the result is an arrow which is print on the screen of the console
   """
+  display.clear()
   if cat_position_x > player_position_x: #show east
     display.set_pixel(3,1,5)
     display.set_pixel(2,0,5)
