@@ -1,0 +1,40 @@
+# Imports go at the top
+from microbit import *
+import time
+
+#wall coordonate virtual
+wall = [[1,1],[2,1],[3,1],[7,1],[2,3],[2,4],[5,3],[6,3],[7,3],[8,3],[1,7],[1,8],[5,6],[6,6],[7,6],[6,7],[6,8],[6,9],[9,8],[9,9]]
+
+#player coordonate virtual
+playerx = 9
+playery = 0
+
+def scan():
+    """scan the area to find the wall around player"""
+    
+    count = 0
+    for x in range(playerx-2,playerx+3):  
+        for y in range(playery-2,playery+3):
+            if [x,y] in wall:
+                print('wall on (%d,%d)' %(x,y))
+                count+=1
+                
+                if playerx ==2 and playery == 2: 
+                    realx = x
+                    realy = y
+
+                else:
+                    for i in range(0,9):
+                        for j in range(0,9):
+                            if playerx+i ==2 :
+                                realx = x+i
+                                
+                            if playerx-i == 2:
+                                realx = x-i
+                                
+                            if playery+j == 2:
+                                realy = y+j
+                                
+                            if playery-j == 2:
+                                realy = y-j
+   
