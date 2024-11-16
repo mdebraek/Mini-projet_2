@@ -1,0 +1,19 @@
+from microbit import *
+
+def player_direction():
+    """this function gives the new player direction based on accelerometer
+
+    return
+    ------
+    coordinates : new player coordinates (str)
+    
+    """
+    
+    while True:
+        if button_a.is_pressed():
+            x = round((accelerometer.get_x() - (-1024)) * (4) / (1000 - (-1024)))
+            y = round((accelerometer.get_y() - (-1024)) * (4) / (1000 - (-1024)))
+            coordinates = "%d,%d" %(x,y)
+            sleep(250)
+
+#the coordinates will be sent as string then in the console file we will convert it to a lsit using the function : coordinates.split(",") 
