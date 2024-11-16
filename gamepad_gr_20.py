@@ -26,7 +26,7 @@ def show_map(local_view):
         game_map.append(temp)
     for x in range(5):#affichage de la map 
         for y in range(5):
-            if game_map[x][y]=="m":
+            if game_map[x][y]=="w":
                 microbit.display.set_pixel(x, y, 3)
             elif game_map[x][y]=="p":
                 microbit.display.set_pixel(x, y, 9)
