@@ -33,6 +33,12 @@ def generate_board():
           
     return wall, player, cat
 def get_local_view(wall, player, cat):
+    """get local view for the gamepad 5 x 5 view of the player
+
+    Returns
+    -------
+    map: 25 letters for the 5 x 5 map (w for wall, p for player, c for cat, v for void)(str)
+    """
     map=str()
     for x in range(player[0]-2, player[0]+3):
         for y in range(player[1]-2, player[1]+3):
