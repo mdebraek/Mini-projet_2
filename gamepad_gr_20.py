@@ -57,17 +57,24 @@ while True:
 
     #send current direction
     
-    x_strength = accelerometer.get_x()
-    y_strength = accelerometer.get_y()
-    
-    if abs(x_strength)>abs(y_strength):
-        if x_strength>0:
-            direction="up"
+    x_strength = microbit.accelerometer.get_x()
+    y_strength = microbit.accelerometer.get_y()
+    deadzone=200
+    direction=str()
+    if abs(x_strength)>deadzone or abs(y_strength)>deadzone:
+        if abs(x_strength)>abs(y_strength):
+            if x_strength>0:
+                direction="left"
+                print("left")
+            else:
+                direction="right"
+                print("right")
         else:
-            direction="down"
-    else:
-        if y_strength>0:
-            direction="right"
-        else:  
-            direction="left"
+            if y_strength>0:
+                direction="up"
+                print("up")
+            else:  
+                direction="down"
+                print("down")
     radio.send(direction)
+
