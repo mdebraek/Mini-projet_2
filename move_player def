@@ -1,0 +1,30 @@
+# Imports go at the top
+from microbit import *
+import radio
+
+def move_player(order: str):
+    """Make the player move
+    Parameters
+    ----------
+    order: the direction send (str)
+    playerx : the position x of the player (int)
+    playery : the position y of the player(int)
+    Return
+    ------
+    Result: the result is that the player moved.
+    The player can moved west,south,north,east or not moved
+    """
+    global playerx, playery
+
+    if order == "left":
+        playerx -=1
+
+    elif order ==  "right":
+        playerx +=1
+
+    elif order == "up":
+        playery +=1
+ 
+    else:
+        playery -=1
+ 
