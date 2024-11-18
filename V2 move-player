@@ -23,17 +23,15 @@ def move_player(order: str, playerx: int, playery:int, catx:int, caty:int):
     
     if order == "left":
         playerx -=1
-        return playerx
     
     elif order ==  "right":
         playerx +=1
-        return playerx
     
     elif order == "up":
         playery +=1
-        return playery
         
      
     else:
         playery -=1
-        return playery
+
+    return playerx,playery
