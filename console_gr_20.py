@@ -72,43 +72,69 @@ def cat_hint(player, cat):
   Return: the result is an arrow which is print on the screen of the console
   """
   microbit.display.clear()
-  if cat[0] > player[0]: #show east
-    microbit.display.set_pixel(3,1,5)
-    microbit.display.set_pixel(2,0,5)
-    microbit.display.set_pixel(3,3,5)
-    microbit.display.set_pixel(2,4,5)
-    list=[0,1,2,3,4]
-    for i in list:
-      microbit.display.set_pixel(i,2,5)
+  if player[1]==cat[1]:
+      if cat[0] > player[0]: #show east
+        microbit.display.set_pixel(3,1,5)
+        microbit.display.set_pixel(2,0,5)
+        microbit.display.set_pixel(3,3,5)
+        microbit.display.set_pixel(2,4,5)
+        list=[0,1,2,3,4]
+        for i in list:
+          microbit.display.set_pixel(i,2,5)
+      else:
+        #show west
+        microbit.display.set_pixel(2,0,5)
+        microbit.display.set_pixel(1,1,5)
+        microbit.display.set_pixel(0,2,5)
+        microbit.display.set_pixel(1,3,5)
+        microbit.display.set_pixel(2,4,5)
+        list=[0,1,2,3,4]
+        for i in list:
+          microbit.display.set_pixel(i,2,5)
+  elif cat[0]==player[0]:
+      if cat[1]> player[1]: #show north
+        microbit.display.set_pixel(3,1,5)
+        microbit.display.set_pixel(4,2,5)
+        microbit.display.set_pixel(1,1,5)
+        microbit.display.set_pixel(0,2,5)
+    
+        list=[0,1,2,3,4]
+        for i in list:
+          microbit.display.set_pixel(2,i,5)
+      else:
+        #show south
+        microbit.display.set_pixel(0,2,5)
+        microbit.display.set_pixel(1,3,5)
+        microbit.display.set_pixel(3,3,5)
+        microbit.display.set_pixel(2,4,5)
+        microbit.display.set_pixel(4,2,5)
+        list=[0,1,2,3,4]
+        for i in list:
+          microbit.display.set_pixel(2,i,5)
+   elif cat[0]>player[0] and cat[1]>player[1]:
+       display.show(Image('50000:'
+                   '05005:'
+                   '00505:'
+                   '00055:'
+                   '05555'))
+  elif cat[0]<player[0] and cat[1]>player[1]:
+      display.show(Image('00005:'
+                   '50050:'
+                   '50500:'
+                   '55000:'
+                   '55550'))
+  elif cat[0]>player[0] and cat[1]<player[1]:
+      display.show(Image('05555:'
+                   '00055:'
+                   '00505:'
+                   '05005:'
+                   '50000:'))
   else:
-    #show west
-    microbit.display.set_pixel(2,0,5)
-    microbit.display.set_pixel(1,1,5)
-    microbit.display.set_pixel(0,2,5)
-    microbit.display.set_pixel(1,3,5)
-    microbit.display.set_pixel(2,4,5)
-    list=[0,1,2,3,4]
-    for i in list:
-      microbit.display.set_pixel(i,2,5)
-  if cat[1]> player[1]: #show north
-    microbit.display.set_pixel(3,1,5)
-    microbit.display.set_pixel(4,2,5)
-    microbit.display.set_pixel(1,1,5)
-    microbit.display.set_pixel(0,2,5)
-
-    list=[0,1,2,3,4]
-    for i in list:
-      microbit.display.set_pixel(2,i,5)
-  else:
-    #show south
-    microbit.display.set_pixel(0,2,5)
-    microbit.display.set_pixel(1,3,5)
-    microbit.display.set_pixel(3,3,5)
-    microbit.display.set_pixel(2,4,5)
-    microbit.display.set_pixel(4,2,5)
-    list=[0,1,2,3,4]
-    for i in list:
-      microbit.display.set_pixel(2,i,5)
+      display.show(Image('55550:'
+                   '55000:'
+                   '50500:'
+                   '50050:'
+                   '00005:'))
 #settings
 group_id = int(20)
 size = int(10)
