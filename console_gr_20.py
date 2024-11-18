@@ -59,7 +59,7 @@ def get_local_view(wall, player, cat):
             else:
                 map+="v"
     return map
-def cat_hint(player_position_x:int,player_position_y:int,cat_position_x:int,cat_position_y:int):
+def cat_hint(player, cat):
   """
   This function show a arrow on the console screen depending on the position of the player and the wherethe cat is in function of the player.
   Parameters
@@ -127,6 +127,7 @@ radio.send(local_view)
 game_is_over = False
 while not game_is_over:
     #show hint
+    cat_hint(player, cat)
     
     #wait until gamepad send an order
     order = get_message()
