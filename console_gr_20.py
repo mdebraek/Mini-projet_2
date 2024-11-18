@@ -59,6 +59,55 @@ def get_local_view(wall, player, cat):
             else:
                 map+="v"
     return map
+def cat_hint(player_position_x:int,player_position_y:int,cat_position_x:int,cat_position_y:int):
+  """
+  This function show a arrow on the console screen depending on the position of the player and the wherethe cat is in function of the player.
+  Parameters
+  ----------
+  player:the position x y of the cat (list)
+  cat: the position x y of the cat (list)
+  Returns
+  -------
+  Return: the result is an arrow which is print on the screen of the console
+  """
+  display.clear()
+  if cat[0]x > player[0]: #show east
+    display.set_pixel(3,1,5)
+    display.set_pixel(2,0,5)
+    display.set_pixel(3,3,5)
+    display.set_pixel(2,4,5)
+    list=[0,1,2,3,4]
+    for i in list:
+      display.set_pixel(i,2,5)
+  else:
+    #show west
+    display.set_pixel(2,0,5)
+    display.set_pixel(1,1,5)
+    display.set_pixel(0,2,5)
+    display.set_pixel(1,3,5)
+    display.set_pixel(2,4,5)
+    list=[0,1,2,3,4]
+    for i in list:
+      display.set_pixel(i,2,5)
+  if cat[1]> player[1]: #show north
+    display.set_pixel(3,1,5)
+    display.set_pixel(4,2,5)
+    display.set_pixel(1,1,5)
+    display.set_pixel(0,2,5)
+
+    list=[0,1,2,3,4]
+    for i in list:
+      display.set_pixel(2,i,5)
+  else:
+    #show south
+    display.set_pixel(0,2,5)
+    display.set_pixel(1,3,5)
+    display.set_pixel(3,3,5)
+    display.set_pixel(2,4,5)
+    display.set_pixel(4,2,5)
+    list=[0,1,2,3,4]
+    for i in list:
+      display.set_pixel(2,i,5)
 #settings
 group_id = int(20)
 size = int(10)
