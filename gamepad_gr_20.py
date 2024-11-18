@@ -59,7 +59,7 @@ while True:
     
     x_strength = microbit.accelerometer.get_x()
     y_strength = microbit.accelerometer.get_y()
-    deadzone=200
+    deadzone=250
     direction=str()
     if abs(x_strength)>deadzone or abs(y_strength)>deadzone:
         if abs(x_strength)>abs(y_strength):
