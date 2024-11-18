@@ -20,6 +20,10 @@ def get_message() -> str:
     return message
 def generate_board(size):
     """ generate the map, the wall, the position of the pkayer and the cat
+    Parameters
+    ----------
+    size: size of the board (int)
+    
     Returns
     -------
     wall: the list of the position of all walls(list)
@@ -56,8 +60,8 @@ def get_local_view(wall, player, cat):
                 map+="v"
     return map
 #settings
-group_id = 20
-size = 10
+group_id = int(20)
+size = int(10)
 
 #setup radio to receive/send messages
 radio.on()
