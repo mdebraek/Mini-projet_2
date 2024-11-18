@@ -60,13 +60,13 @@ while True:
     x_strength = accelerometer.get_x()
     y_strength = accelerometer.get_y()
     
-    if abs(x_strength)-1000>abs(y_strength)-1000:
-        if x_strength>-1000:
+    if abs(x_strength)>abs(y_strength):
+        if x_strength>0:
             direction="up"
         else:
             direction="down"
     else:
-        if y_strength>-1000:
+        if y_strength>0:
             direction="right"
         else:  
             direction="left"
