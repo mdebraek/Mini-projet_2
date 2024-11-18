@@ -18,7 +18,7 @@ def get_message() -> str:
         message=radio.receive()
         
     return message
-def generate_board():
+def generate_board(size):
     """ generate the map, the wall, the position of the pkayer and the cat
     Returns
     -------
@@ -28,8 +28,12 @@ def generate_board():
     """
     #wall coordonate virtual
     wall = [[1,1],[2,1],[3,1],[7,1],[2,3],[2,4],[5,3],[6,3],[7,3],[8,3],[1,7],[1,8],[5,6],[6,6],[7,6],[6,7],[6,8],[6,9],[9,8],[9,9]]
-    player = [4, 4]
-    cat = [5, 5]
+    player = []
+    cat = []
+    while player in wall:
+        player = [randint(0,size), randint(0,size)]
+    while cat in wall and cat in player:
+        cat = [randint(0,size), randint(0,size)]
           
     return wall, player, cat
 def get_local_view(wall, player, cat):
@@ -60,7 +64,7 @@ radio.on()
 radio.config(group=group_id)
 
 #create board an place cat + player
-wall, player, cat = generate_board()
+wall, player, cat = generate_board(size)
 
 #send local view of the board to gamepad
 local_view=get_local_view(wall, player, cat)
