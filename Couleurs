@@ -1,0 +1,20 @@
+display.show(Image('50000:'
+                   '05005:'
+                   '00505:'
+                   '00055:'
+                   '05555')) # show south-east
+display.show(Image('00005:'
+                   '50050:'
+                   '50500:'
+                   '55000:'
+                   '55550')) # show south-west
+display.show(Image('05555:'
+                   '00055:'
+                   '00505:'
+                   '05005:'
+                   '50000:')) # show north-east
+display.show(Image('55550:'
+                   '55000:'
+                   '50500:'
+                   '50050:'
+                   '00005:')) # show north_west
