@@ -32,13 +32,13 @@ def generate_board(size):
     """
     #wall coordonate virtual
     wall = [[1,1],[2,1],[3,1],[7,1],[2,3],[2,4],[5,3],[6,3],[7,3],[8,3],[1,7],[1,8],[5,6],[6,6],[7,6],[6,7],[6,8],[6,9],[9,8],[9,9]]
-    player = []
-    cat = []
+    player = [1, 1]
+    cat = [1, 1]
     while player in wall:
-        player = [random.randint(0,size), random.randint(0,size)]
+        player = [random.randint(0,size-1), random.randint(0,size-1)]
     while cat in wall and cat in player:
-        cat = [random.randint(0,size), random.randint(0,size)]
-          
+        cat = [random.randint(0,size-1), random.randint(0,size-1)]
+    print(player, cat)    
     return wall, player, cat
 def get_local_view(wall, player, cat):
     """get local view for the gamepad 5 x 5 view of the player
@@ -58,6 +58,7 @@ def get_local_view(wall, player, cat):
                 map+="c"
             else:
                 map+="v"
+    print(map)
     return map
 def cat_hint(player, cat):
   """
