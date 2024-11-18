@@ -149,4 +149,3 @@ while not game_is_over:
         
 #tell that the game is over
 microbit.display.scroll("Vous avez gagné !!! :D", delay=100)
-
