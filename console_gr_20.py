@@ -65,24 +65,26 @@ def get_local_view(wall, player, cat):
                 map+="v"
     print(map)
     return map
-def move_cat(cat: list):
+def move_cat(cat: list, wall: list):
     """Make the cat move
     Parameters
     ----------
     cat : the position x y of the cat(list)
+    wall : the position x y of all walls on the map(list)
+    
     Return
     ------
     Result: the result is that the cat moved.
     The cat can moved up,down,right,left or not moved
     """
     number = random.randint(1,5)
-    if number == 1:
+    if number == 1 and not cat[1]+1 in wall:
         cat[1]+1 #up
-    elif number ==2:
+    elif number ==2 and not cat[1]-1 in wall:
         cat[1] -1 #down
-    elif number == 3:
+    elif number == 3 and not cat[0]+1 in wall:
         cat[0] +1 #right
-    elif number == 4:
+    elif number == 4 and not cat[0]-1 in wall:
         cat[0] -1 #left
     return cat
     
@@ -137,26 +139,26 @@ def cat_hint(player, cat):
         list=[0,1,2,3,4]
         for i in list:
           microbit.display.set_pixel(2,i,5)
-   elif cat[0]>player[0] and cat[1]>player[1]:
-       display.show(Image('50000:'
+  elif cat[0]>player[0] and cat[1]>player[1]:
+       microbit.display.show(microbit.Image('50000:'
                    '05005:'
                    '00505:'
                    '00055:'
                    '05555'))
   elif cat[0]<player[0] and cat[1]>player[1]:
-      display.show(Image('00005:'
+      microbit.display.show(microbit.Image('00005:'
                    '50050:'
                    '50500:'
                    '55000:'
                    '55550'))
   elif cat[0]>player[0] and cat[1]<player[1]:
-      display.show(Image('05555:'
+      microbit.display.show(microbit.Image('05555:'
                    '00055:'
                    '00505:'
                    '05005:'
                    '50000:'))
   else:
-      display.show(Image('55550:'
+      microbit.display.show(microbit.Image('55550:'
                    '55000:'
                    '50500:'
                    '50050:'
@@ -199,7 +201,8 @@ while not game_is_over:
         microbit.display.clear()
         
         #update position of the cat
-        cat = move_cat(cat)
+        cat = move_cat(cat, wall)
         
 #tell that the game is over
-microbit.display.scroll("Vous avez gagné !!! :D", delay=100)
+microbit.display.scroll("You win !!! :D", delay=100)
+
