@@ -42,6 +42,11 @@ def generate_board(size):
     return wall, player, cat
 def get_local_view(wall, player, cat):
     """get local view for the gamepad 5 x 5 view of the player
+    Parameters
+    ----------
+    wall: list of all walls position (list)
+    player: list of the position x y of the player (list)
+    cat: list of the position x y of the cat (list)
 
     Returns
     -------
@@ -60,6 +65,27 @@ def get_local_view(wall, player, cat):
                 map+="v"
     print(map)
     return map
+def move_cat(cat: list):
+    """Make the cat move
+    Parameters
+    ----------
+    cat : the position x y of the cat(list)
+    Return
+    ------
+    Result: the result is that the cat moved.
+    The cat can moved up,down,right,left or not moved
+    """
+    number = random.randint(1,5)
+    if number == 1:
+        cat[1]+1 #up
+    elif number ==2:
+        cat[1] -1 #down
+    elif number == 3:
+        cat[0] +1 #right
+    elif number == 4:
+        cat[0] -1 #left
+    return cat
+    
 def cat_hint(player, cat):
   """
   This function show a arrow on the console screen depending on the position of the player and the wherethe cat is in function of the player.
@@ -173,6 +199,7 @@ while not game_is_over:
         microbit.display.clear()
         
         #update position of the cat
+        cat = move_cat(cat)
         
 #tell that the game is over
 microbit.display.scroll("Vous avez gagné !!! :D", delay=100)
