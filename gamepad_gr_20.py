@@ -65,16 +65,15 @@ while True:
         if abs(x_strength)>abs(y_strength):
             if x_strength>0:
                 direction="left"
-                print("left")
             else:
                 direction="right"
-                print("right")
         else:
             if y_strength>0:
                 direction="up"
-                print("up")
             else:  
                 direction="down"
-                print("down")
+    if direction = str():
+        direction="none"
+
     radio.send(direction)
 
