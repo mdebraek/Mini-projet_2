@@ -163,6 +163,44 @@ def cat_hint(player, cat):
                    '50500:'
                    '50050:'
                    '00005:'))
+      
+def move_player(order: str, player: list):
+    """Make the player move
+    Parameters
+    ----------
+    order: the direction send (str)
+    player : the position x y of the player (list)
+    
+    Return
+    ------
+    Result: the result is that the player moved.
+    The player can moved up, down, left, right or not moved
+    return the new position of the player
+    """
+    if order == "left":
+        player[0] -=1
+    elif order ==  "right":
+        player[0] +=1
+    elif order == "up":
+        player[1] +=1           
+    elif order == "down":
+        player[1] -=1
+    return player
+def check_win(player, cat):
+    """Check if the player win
+    Parameters
+    ----------
+    player: the position x y of the player (list)
+    cat: the position x y of the cat (list)
+    
+    Return
+    ------
+    Result: the result is that the player win or not
+    """
+    if player == cat:
+        return True
+    else:
+        return False
 #settings
 group_id = int(20)
 size = int(10)
@@ -187,13 +225,14 @@ while not game_is_over:
     #wait until gamepad send an order
     order = get_message()
     #execute order (move player)
+    player = move_player(order, player, wall)
     
     #send local view of the board to gamepad
     local_view=get_local_view(wall, player, cat)
     radio.send(local_view)
     
     #check if game is over
-    game_is_over=True
+    game_is_over = check_win(player, cat, game_is_over)
     
     if not game_is_over:
         #wait a few secondes and clear screen
@@ -205,4 +244,3 @@ while not game_is_over:
         
 #tell that the game is over
 microbit.display.scroll("You win !!! :D", delay=100)
-
