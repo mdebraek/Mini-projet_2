@@ -72,7 +72,7 @@ while True:
                 direction="up"
             else:  
                 direction="down"
-    if direction = str():
+    if direction == str():
         direction="none"
 
     radio.send(direction)
