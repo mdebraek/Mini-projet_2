@@ -37,8 +37,7 @@ def generate_board(size):
     while player in wall:
         player = [random.randint(0,size-1), random.randint(0,size-1)]
     while cat in wall and cat in player:
-        cat = [random.randint(0,size-1), random.randint(0,size-1)]
-    print(player, cat)    
+        cat = [random.randint(0,size-1), random.randint(0,size-1)]  
     return wall, player, cat
 def get_local_view(wall, player, cat):
     """get local view for the gamepad 5 x 5 view of the player
