@@ -228,7 +228,7 @@ while not game_is_over:
     #wait until gamepad send an order
     order = get_message()
     #execute order (move player)
-    player = move_player(order, player, wall)
+    player = move_player(order, player, wall, size)
     
     #send local view of the board to gamepad
     local_view=get_local_view(wall, player, cat)
