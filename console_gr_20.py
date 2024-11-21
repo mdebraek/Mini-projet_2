@@ -78,13 +78,13 @@ def move_cat(cat: list, wall: list):
     The cat can moved up,down,right,left or not moved
     """
     number = random.randint(1,5)
-    if number == 1 and not cat[1]+1 in wall:
+    if number == 1 and not [cat[0], cat[1]+1] in wall:
         cat[1]+1 #up
-    elif number ==2 and not cat[1]-1 in wall:
+    elif number ==2 and not [cat[0], cat[1]-1] in wall:
         cat[1] -1 #down
-    elif number == 3 and not cat[0]+1 in wall:
+    elif number == 3 and not [cat[0]+1, cat[1]] in wall:
         cat[0] +1 #right
-    elif number == 4 and not cat[0]-1 in wall:
+    elif number == 4 and not [cat[0], cat[0]-1] in wall:
         cat[0] -1 #left
     return cat
     
