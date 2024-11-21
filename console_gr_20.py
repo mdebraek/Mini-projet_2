@@ -101,67 +101,24 @@ def cat_hint(player, cat):
   microbit.display.clear()
   if player[1]==cat[1]:
       if cat[0] > player[0]: #show east
-        microbit.display.set_pixel(3,1,5)
-        microbit.display.set_pixel(2,0,5)
-        microbit.display.set_pixel(3,3,5)
-        microbit.display.set_pixel(2,4,5)
-        list=[0,1,2,3,4]
-        for i in list:
-          microbit.display.set_pixel(i,2,5)
+        microbit.show(microbit.Image.ARROW_E)
       else:
         #show west
-        microbit.display.set_pixel(2,0,5)
-        microbit.display.set_pixel(1,1,5)
-        microbit.display.set_pixel(0,2,5)
-        microbit.display.set_pixel(1,3,5)
-        microbit.display.set_pixel(2,4,5)
-        list=[0,1,2,3,4]
-        for i in list:
-          microbit.display.set_pixel(i,2,5)
+        microbit.show(microbit.Image.ARROW_W)
   elif cat[0]==player[0]:
       if cat[1]> player[1]: #show north
-        microbit.display.set_pixel(3,1,5)
-        microbit.display.set_pixel(4,2,5)
-        microbit.display.set_pixel(1,1,5)
-        microbit.display.set_pixel(0,2,5)
-    
-        list=[0,1,2,3,4]
-        for i in list:
-          microbit.display.set_pixel(2,i,5)
+        microbit.show(microbit.Image.ARROW_N)
       else:
         #show south
-        microbit.display.set_pixel(0,2,5)
-        microbit.display.set_pixel(1,3,5)
-        microbit.display.set_pixel(3,3,5)
-        microbit.display.set_pixel(2,4,5)
-        microbit.display.set_pixel(4,2,5)
-        list=[0,1,2,3,4]
-        for i in list:
-          microbit.display.set_pixel(2,i,5)
+        microbit.show(microbit.Image.ARROW_S)
   elif cat[0]>player[0] and cat[1]>player[1]:
-       microbit.display.show(microbit.Image('50000:'
-                   '05005:'
-                   '00505:'
-                   '00055:'
-                   '05555'))
+       microbit.show(microbit.Image.ARROW_SE)
   elif cat[0]<player[0] and cat[1]>player[1]:
-      microbit.display.show(microbit.Image('00005:'
-                   '50050:'
-                   '50500:'
-                   '55000:'
-                   '55550'))
+      microbit.show(microbit.Image.ARROW_SW)
   elif cat[0]>player[0] and cat[1]<player[1]:
-      microbit.display.show(microbit.Image('05555:'
-                   '00055:'
-                   '00505:'
-                   '05005:'
-                   '50000:'))
+      microbit.show(microbit.Image.ARROW_NE)
   else:
-      microbit.display.show(microbit.Image('55550:'
-                   '55000:'
-                   '50500:'
-                   '50050:'
-                   '00005:'))
+      microbit.show(microbit.Image.ARROW_NW)
       
 def move_player(order: str, player: list, wall: list, size: int):
     """Make the player move
