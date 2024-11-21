@@ -235,7 +235,7 @@ while not game_is_over:
     radio.send(local_view)
     
     #check if game is over
-    game_is_over = check_win(player, cat, game_is_over)
+    game_is_over = check_win(player, cat)
     
     if not game_is_over:
         #wait a few secondes and clear screen
