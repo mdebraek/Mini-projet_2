@@ -164,26 +164,29 @@ def cat_hint(player, cat):
                    '50050:'
                    '00005:'))
       
-def move_player(order: str, player: list):
+def move_player(order: str, player: list, wall: list, size: int):
     """Make the player move
     Parameters
     ----------
     order: the direction send (str)
     player : the position x y of the player (list)
+    wall : the position x y of all wall on the map (list)
+    size : size of the map(int)
     
     Return
     ------
     Result: the result is that the player moved.
     The player can moved up, down, left, right or not moved
+    check if the player have the right to move (no wall, still in map)
     return the new position of the player
     """
-    if order == "left":
+    if order == "left" and [player[0]-1, player[1]] not in wall and player[0]-1>=0:
         player[0] -=1
-    elif order ==  "right":
+    elif order ==  "right" and [player[0]+1, player[1]] not in wall and player[0]+1<size:
         player[0] +=1
-    elif order == "up":
+    elif order == "up" and [player[0], player[1]+1] not in wall and player[1]+1<size:
         player[1] +=1           
-    elif order == "down":
+    elif order == "down" and [player[0], player[1]-1] not in wall and player[1]-1>=0:
         player[1] -=1
     return player
 def check_win(player, cat):
