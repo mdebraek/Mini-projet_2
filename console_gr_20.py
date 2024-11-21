@@ -101,24 +101,24 @@ def cat_hint(player, cat):
   microbit.display.clear()
   if player[1]==cat[1]:
       if cat[0] > player[0]: #show east
-        microbit.show(microbit.Image.ARROW_E)
+        microbit.display.show(microbit.Image.ARROW_E)
       else:
         #show west
-        microbit.show(microbit.Image.ARROW_W)
+        microbit.display.show(microbit.Image.ARROW_W)
   elif cat[0]==player[0]:
       if cat[1]> player[1]: #show north
-        microbit.show(microbit.Image.ARROW_N)
+        microbit.display.show(microbit.Image.ARROW_N)
       else:
         #show south
-        microbit.show(microbit.Image.ARROW_S)
+        microbit.display.show(microbit.Image.ARROW_S)
   elif cat[0]>player[0] and cat[1]>player[1]:
-       microbit.show(microbit.Image.ARROW_SE)
+       microbit.display.show(microbit.Image.ARROW_SE)
   elif cat[0]<player[0] and cat[1]>player[1]:
-      microbit.show(microbit.Image.ARROW_SW)
+      microbit.display.show(microbit.Image.ARROW_SW)
   elif cat[0]>player[0] and cat[1]<player[1]:
-      microbit.show(microbit.Image.ARROW_NE)
+      microbit.display.show(microbit.Image.ARROW_NE)
   else:
-      microbit.show(microbit.Image.ARROW_NW)
+      microbit.display.show(microbit.Image.ARROW_NW)
       
 def move_player(order: str, player: list, wall: list, size: int):
     """Make the player move
