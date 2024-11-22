@@ -66,7 +66,6 @@ def get_local_view(wall, player, cat):
                 map+="c"
             else:
                 map+="v"
-    print(map)
     return map
 def move_cat(cat: list, wall: list):
     """Make the cat move
