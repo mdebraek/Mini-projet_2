@@ -31,9 +31,13 @@ def generate_board(size):
     cat: the list of the position of the cat(list)
     """
     #wall coordonate virtual
-    wall = [[1,1],[2,1],[3,1],[7,1],[2,3],[2,4],[5,3],[6,3],[7,3],[8,3],[1,7],[1,8],[5,6],[6,6],[7,6],[6,7],[6,8],[6,9],[9,8],[9,9]]
-    player = [1, 1]
-    cat = [1, 1]
+    wall = []
+    for i in range random.randint(size**2//4, size**2//2)
+        random_wall = [random.randint(0, size-1), random.randint(0, size-1)]
+        if random_wall not in wall:
+            wall.append(random_wall)
+    player = wall[0]
+    cat = wall[0]
     while player in wall:
         player = [random.randint(0,size-1), random.randint(0,size-1)]
     while cat in wall and cat in player:
