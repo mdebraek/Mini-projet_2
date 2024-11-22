@@ -40,7 +40,6 @@ def generate_board(size):
         player = [random.randint(0,size-1), random.randint(0,size-1)]
     while cat in wall or cat == player:
         cat = [random.randint(0,size-1), random.randint(0,size-1)]  
-    print(player, cat)
     return wall, player, cat
 def get_local_view(wall, player, cat):
     """get local view for the gamepad 5 x 5 view of the player
@@ -55,7 +54,6 @@ def get_local_view(wall, player, cat):
     map: 25 letters for the 5 x 5 map (w for wall, p for player, c for cat, v for void)(str)
     """
     map=str()
-    print("cat :",cat)
     for x in range(player[0]-2, player[0]+3):
         for y in range(player[1]-2, player[1]+3):
             if [x, y] in wall:
@@ -66,7 +64,6 @@ def get_local_view(wall, player, cat):
                 map+="c"
             else:
                 map+="v"
-    print(map)
     return map
 def move_cat(cat: list, wall: list, size):
     """Make the cat move
