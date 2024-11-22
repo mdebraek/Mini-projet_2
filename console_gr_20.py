@@ -32,7 +32,7 @@ def generate_board(size):
     """
     #wall coordonate virtual
     wall = []
-    for i in range random.randint(size**2//4, size**2//2):
+    for i in range (random.randint(size**2//4, size**2//2)):
         random_wall = [random.randint(0, size-1), random.randint(0, size-1)]
         if random_wall not in wall:
             wall.append(random_wall)
