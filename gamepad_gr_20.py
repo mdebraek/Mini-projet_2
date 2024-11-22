@@ -27,9 +27,9 @@ def show_map(local_view):
     for x in range(5):#affichage de la map 
         for y in range(5):
             if game_map[x][y]=="w":
-                microbit.display.set_pixel(x, y, 3)
+                microbit.display.set_pixel(x, y, 2)
             elif game_map[x][y]=="p":
-                microbit.display.set_pixel(x, y, 9)
+                microbit.display.set_pixel(x, y, 7)
             elif game_map[x][y]=="c":
                 microbit.display.set_pixel(x, y, 9)
                 
@@ -76,4 +76,3 @@ while True:
         direction="none"
 
     radio.send(direction)
-
