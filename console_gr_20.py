@@ -7,7 +7,6 @@ import microbit
 #definitions of functions
 def get_message() -> str:
     """Wait and return a message from another micro bit
-    
     Returns
     -------
     messages: message sent by another micro bit(str)
@@ -23,7 +22,6 @@ def generate_board(size):
     Parameters
     ----------
     size: size of the board (int)
-    
     Returns
     -------
     wall: the list of the position of all walls(list)
@@ -40,8 +38,9 @@ def generate_board(size):
     cat = wall[0]
     while player in wall:
         player = [random.randint(0,size-1), random.randint(0,size-1)]
-    while cat in wall and cat in player:
+    while cat in wall or cat == player:
         cat = [random.randint(0,size-1), random.randint(0,size-1)]  
+    print(player, cat)
     return wall, player, cat
 def get_local_view(wall, player, cat):
     """get local view for the gamepad 5 x 5 view of the player
@@ -56,18 +55,20 @@ def get_local_view(wall, player, cat):
     map: 25 letters for the 5 x 5 map (w for wall, p for player, c for cat, v for void)(str)
     """
     map=str()
+    print("cat :",cat)
     for x in range(player[0]-2, player[0]+3):
         for y in range(player[1]-2, player[1]+3):
             if [x, y] in wall:
                 map+="w"
-            elif [x, y] in player:
+            elif [x, y] == player:
                 map+="p"
-            elif [x, y] in cat:
+            elif [x, y] == cat:
                 map+="c"
             else:
                 map+="v"
+    print(map)
     return map
-def move_cat(cat: list, wall: list):
+def move_cat(cat: list, wall: list, size):
     """Make the cat move
     Parameters
     ----------
@@ -80,14 +81,14 @@ def move_cat(cat: list, wall: list):
     The cat can moved up,down,right,left or not moved
     """
     number = random.randint(1,5)
-    if number == 1 and not [cat[0], cat[1]+1] in wall:
-        cat[1]+1 #up
-    elif number ==2 and not [cat[0], cat[1]-1] in wall:
-        cat[1] -1 #down
-    elif number == 3 and not [cat[0]+1, cat[1]] in wall:
-        cat[0] +1 #right
-    elif number == 4 and not [cat[0], cat[0]-1] in wall:
-        cat[0] -1 #left
+    if number == 1 and [cat[0], cat[1]-1] not in wall and cat[1]-1>=0:
+        cat[1]-=1 #up
+    elif number ==2 and [cat[0], cat[1]+1] not in wall and cat[1]+1<size-1:
+        cat[1] +=1 #down
+    elif number == 3 and [cat[0]+1, cat[1]] not in wall and cat[0]+1<size-1:
+        cat[0] +=1 #right
+    elif number == 4 and [cat[0], cat[0]-1] not in wall and cat[0]-1>=0:
+        cat[0] -=1 #left
     return cat
     
 def cat_hint(player, cat):
@@ -109,7 +110,7 @@ def cat_hint(player, cat):
         #show west
         microbit.display.show(microbit.Image.ARROW_W)
   elif cat[0]==player[0]:
-      if cat[1]> player[1]: #show north
+      if cat[1]<player[1]: #show north
         microbit.display.show(microbit.Image.ARROW_N)
       else:
         #show south
@@ -202,7 +203,7 @@ while not game_is_over:
         microbit.display.clear()
         
         #update position of the cat
-        cat = move_cat(cat, wall)
+        cat = move_cat(cat, wall, size)
         
 #tell that the game is over
 microbit.display.scroll("You win !!! :D", delay=100)
