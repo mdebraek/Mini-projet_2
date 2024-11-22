@@ -19,7 +19,7 @@ def get_message() -> str:
         
     return message
 def generate_board(size):
-    """ generate the map, the wall, the position of the pkayer and the cat
+    """ generate the map, the wall, the position of the player and the cat
     Parameters
     ----------
     size: size of the board (int)
@@ -32,7 +32,7 @@ def generate_board(size):
     """
     #wall coordonate virtual
     wall = []
-    for i in range random.randint(size**2//4, size**2//2)
+    for i in range random.randint(size**2//4, size**2//2):
         random_wall = [random.randint(0, size-1), random.randint(0, size-1)]
         if random_wall not in wall:
             wall.append(random_wall)
