@@ -59,14 +59,14 @@ while True:
     
     x_strength = microbit.accelerometer.get_x()
     y_strength = microbit.accelerometer.get_y()
-    deadzone=250
+    deadzone=100
     direction=str()
     if abs(x_strength)>deadzone or abs(y_strength)>deadzone:
         if abs(x_strength)>abs(y_strength):
             if x_strength>0:
-                direction="left"
-            else:
                 direction="right"
+            else:
+                direction="left"
         else:
             if y_strength>0:
                 direction="up"
