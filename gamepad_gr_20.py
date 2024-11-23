@@ -32,6 +32,25 @@ def show_map(local_view):
                 microbit.display.set_pixel(x, y, 7)
             elif game_map[x][y]=="c":
                 microbit.display.set_pixel(x, y, 9)
+def get_direction():
+    x_strength = microbit.accelerometer.get_x()
+    y_strength = microbit.accelerometer.get_y()
+    deadzone=100
+    direction=str()
+    if abs(x_strength)>deadzone or abs(y_strength)>deadzone:
+        if abs(x_strength)>abs(y_strength):
+            if x_strength>0:
+                direction="right"
+            else:
+                direction="left"
+        else:
+            if y_strength>0:
+                direction="up"
+            else:  
+                direction="down"
+    if direction == str():
+        direction="none"
+    return direction
                 
 #settings
 group_id = 20
@@ -55,24 +74,5 @@ while True:
     while not microbit.button_a.is_pressed():
         microbit.sleep(50)
 
-    #send current direction
-    
-    x_strength = microbit.accelerometer.get_x()
-    y_strength = microbit.accelerometer.get_y()
-    deadzone=100
-    direction=str()
-    if abs(x_strength)>deadzone or abs(y_strength)>deadzone:
-        if abs(x_strength)>abs(y_strength):
-            if x_strength>0:
-                direction="right"
-            else:
-                direction="left"
-        else:
-            if y_strength>0:
-                direction="up"
-            else:  
-                direction="down"
-    if direction == str():
-        direction="none"
-
-    radio.send(direction)
+#send current direction
+radio.send(direction())
