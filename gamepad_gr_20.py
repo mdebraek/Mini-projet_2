@@ -34,6 +34,9 @@ def show_map(local_view):
                 microbit.display.set_pixel(x, y, 9)
 def get_direction():
     """return the direction of the gamepad
+    Returns
+    -------
+    direction: direction up, down, left, right (str)
     """
     x_strength = microbit.accelerometer.get_x()
     y_strength = microbit.accelerometer.get_y()
