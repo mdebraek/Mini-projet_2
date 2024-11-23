@@ -203,4 +203,4 @@ while not game_is_over:
         cat = move_cat(cat, wall, size)
         
 #tell that the game is over
-microbit.display.scroll("You win !!! :D", delay=100)
+microbit.display.scroll("You won !!! :D", delay=100)
