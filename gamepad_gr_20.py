@@ -74,5 +74,5 @@ while True:
     while not microbit.button_a.is_pressed():
         microbit.sleep(50)
 
-#send current direction
-radio.send(get_direction())
+    #send current direction
+    radio.send(get_direction())
