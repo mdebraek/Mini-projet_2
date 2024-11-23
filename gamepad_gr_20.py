@@ -33,6 +33,8 @@ def show_map(local_view):
             elif game_map[x][y]=="c":
                 microbit.display.set_pixel(x, y, 9)
 def get_direction():
+    """return the direction of the gamepad
+    """
     x_strength = microbit.accelerometer.get_x()
     y_strength = microbit.accelerometer.get_y()
     deadzone=100
