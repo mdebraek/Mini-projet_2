@@ -75,4 +75,4 @@ while True:
         microbit.sleep(50)
 
 #send current direction
-radio.send(direction())
+radio.send(get_direction())
